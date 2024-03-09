@@ -119,7 +119,7 @@ export default createEslintRule<Options, MESSAGE_ID>({
         options['ignore-pattern'].length &&
         typeof variableIdentifier === 'string'
           ? options['ignore-pattern'].some(pattern =>
-              minimatch(variableIdentifier!, pattern, {
+              minimatch(variableIdentifier, pattern, {
                 nocomment: true,
               }),
             )
