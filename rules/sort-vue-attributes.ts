@@ -78,7 +78,11 @@ export default createEslintRule<Options<string[]>, MESSAGE_ID>({
       return {}
     }
 
-    if (!('defineTemplateBodyVisitor' in context.sourceCode.parserServices)) {
+    if (
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      context.sourceCode.parserServices === undefined ||
+      !('defineTemplateBodyVisitor' in context.sourceCode.parserServices)
+    ) {
       return {}
     }
 
