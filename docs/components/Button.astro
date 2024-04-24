@@ -1,0 +1,71 @@
+---
+interface Props {
+  color: 'primary' | 'secondary'
+  target?: string
+  href?: string
+  id?: string
+}
+
+let { color, ...props } = Astro.props
+
+let Element = props.href ? 'a' : 'button'
+---
+
+<Element
+  class:list={[
+    'button',
+    {
+      'button-primary': color === 'primary',
+      'button-secondary': color === 'secondary',
+    },
+  ]}
+  {...props}
+>
+  <slot />
+</Element>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 200px;
+    block-size: 48px;
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--border-radius);
+    transition: box-shadow 200ms ease-in-out;
+
+    &:focus-visible {
+      text-decoration: none;
+      background: var(--color-overlay-brand);
+      box-shadow: 0 0 0 3px var(--color-border-brand);
+    }
+  }
+
+  .button-primary {
+    color: oklch(100% 0 0);
+    background: var(--color-background-brand);
+    transition: all 200ms;
+
+    @media (hover: hover) {
+      &:hover {
+        background: var(--color-background-brand-hover);
+      }
+    }
+  }
+
+  .button-secondary {
+    color: var(--color-content-primary);
+    background: var(--color-background-secondary);
+
+    @media (hover: hover) {
+      &:hover {
+        background: var(--color-background-secondary-hover);
+      }
+    }
+  }
+</style>

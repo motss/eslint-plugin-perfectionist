@@ -1,0 +1,25 @@
+---
+import PackageManager from './PackageManager.vue'
+import Container from './Container.astro'
+import Title from './Title.astro'
+---
+
+<section class="section">
+  <Container size="s">
+    <Title>Installation</Title>
+    <PackageManager
+      npm="npm install --save-dev eslint-plugin-perfectionist"
+      pnpm="pnpm add --save-dev eslint-plugin-perfectionist"
+      yarn="yarn add --dev eslint-plugin-perfectionist"
+      bun="bun install --dev eslint-plugin-perfectionist"
+      client:only="vue"
+    />
+  </Container>
+</section>
+
+<style>
+  .section {
+    padding-block: 120px;
+    background: var(--color-background-primary);
+  }
+</style>

@@ -1,0 +1,82 @@
+@font-face {
+  font-family: Inter;
+  font-weight: 400;
+  src: url('/fonts/inter-regular.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  font-weight: 700;
+  src: url('/fonts/inter-bold.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 500;
+  src: url('/fonts/space-grotesk-medium.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Martian Mono';
+  src: url('/fonts/martian-mono-regular.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  size-adjust: 107.64%;
+  ascent-override: 90%;
+  descent-override: 22.43%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  size-adjust: 110.89%;
+  ascent-override: 88.74%;
+  descent-override: 26.33%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Martian Mono Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Courier New');
+  size-adjust: 124.98%;
+  ascent-override: 80.01%;
+  descent-override: 16%;
+  line-gap-override: 0%;
+}
+
+:root {
+  --font-family-base: 'Inter', 'Inter Fallback', sans-serif;
+  --font-family-title: 'Space Grotesk', 'Space Grotesk Fallback', sans-serif;
+  --font-family-code: 'Martian Mono', 'Martian Mono Fallback', monospace;
+
+  --font-size-2xs: clamp(0.97rem, -0.6vi + 1.12rem, 0.64rem);
+  --font-size-xs: clamp(1.02rem, -0.4vi + 1.12rem, 0.8rem);
+  --font-size-s: clamp(1.07rem, -0.13vi + 1.1rem, 1rem);
+  --font-size-m: clamp(1.13rem, 0.23vi + 1.07rem, 1.25rem);
+  --font-size-l: clamp(1.18rem, 0.69vi + 1.01rem, 1.56rem);
+  --font-size-xl: clamp(1.24rem, 1.3vi + 0.92rem, 1.95rem);
+  --font-size-2xl: clamp(1.3rem, 2.07vi + 0.78rem, 2.44rem);
+
+  --font-2xs: 400 var(--font-size-2xs) / 1.5 var(--font-family-base);
+  --font-xs: 400 var(--font-size-xs) / 1.5 var(--font-family-base);
+  --font-s: 400 var(--font-size-s) / 1.5 var(--font-family-base);
+  --font-m: 400 var(--font-size-m) / 1.5 var(--font-family-base);
+  --font-l: 400 var(--font-size-l) / 1.5 var(--font-family-title);
+  --font-xl: 600 var(--font-size-xl) / 1.5 var(--font-family-title);
+  --font-2xl: 600 var(--font-size-2xl) / 1.75 var(--font-family-title);
+  --font-code: 400 var(--font-size-code) / 1.75 var(--font-family-code);
+}

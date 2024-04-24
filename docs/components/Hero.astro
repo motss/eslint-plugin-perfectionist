@@ -1,0 +1,147 @@
+---
+import { getLocaleFromUrl } from '../utils/get-locale-from-url'
+import { useTranslations } from '../utils/use-translations'
+import Container from './Container.astro'
+import ButtonLink from './Button.astro'
+import Logo from './Logo.astro'
+
+let locale = getLocaleFromUrl(Astro.url)
+let t = useTranslations(locale)
+---
+
+<div class="hero">
+  <Container class="hero-content">
+    <Logo class="logo" />
+    <h1 class="title">Perfectionist</h1>
+    <p class="subtitle">{t('slogan')}</p>
+    <div class="button-group">
+      <ButtonLink href="/guide" color="primary">
+        {t('get-started')}
+      </ButtonLink>
+      <ButtonLink
+        href="https://github.com/azat-io/eslint-plugin-perfectionist"
+        color="secondary"
+        target="_blank"
+      >
+        {t('view-on-github')}
+      </ButtonLink>
+    </div>
+  </Container>
+  <div class="lines lines-left">
+    <div class="line line-left line-l"></div>
+    <div class="line line-left line-m"></div>
+    <div class="line line-left line-s"></div>
+  </div>
+  <div class="lines lines-right">
+    <div class="line line-right line-l"></div>
+    <div class="line line-right line-m"></div>
+    <div class="line line-right line-s"></div>
+  </div>
+</div>
+
+<style>
+  :root {
+    --line-margin: clamp(15.625rem, 18.75vi + 10rem, 25rem);
+    --line-step: clamp(1.5rem, 9.5vi + -1.35rem, 6.25rem);
+  }
+
+  .hero {
+    position: relative;
+    padding-block: var(--space-l) calc(var(--space-xl) * 2);
+    color: var(--color-content-primary);
+    background: var(--color-background-primary);
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .logo {
+    inline-size: 200px;
+    block-size: 200px;
+  }
+
+  .title,
+  .subtitle {
+    margin-block: 0;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-block-start: 32px;
+
+    @container (inline-size >= 480px) {
+      flex-direction: row;
+    }
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 200px;
+    block-size: 48px;
+    padding: 0 16px;
+    font: var(--font-s);
+    color: var(--color-content-primary);
+    text-decoration: none;
+    background: var(--color-background-primary-hover);
+    border-radius: var(--border-radius);
+    transition: background 0.2s ease-in-out;
+  }
+
+  .button-primary {
+    color: oklch(100% 0 0);
+    background: var(--color-background-brand);
+  }
+
+  .lines {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    block-size: 512px;
+    inset-block-start: calc(var(--space-l) + 18px);
+  }
+
+  .lines-left {
+    inset-inline-start: 0;
+    align-items: start;
+  }
+
+  .lines-right {
+    inset-inline-end: 0;
+    align-items: end;
+  }
+
+  .line {
+    block-size: 64px;
+    background: var(--color-background-primary-hover);
+  }
+
+  .line-left {
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+
+  .line-right {
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+  }
+
+  .line-l {
+    inline-size: calc((100vi - var(--line-margin)) / 2 - var(--line-step));
+  }
+
+  .line-m {
+    inline-size: calc((100vi - var(--line-margin)) / 2 - var(--line-step) * 2);
+  }
+
+  .line-s {
+    inline-size: calc((100vi - var(--line-margin)) / 2 - var(--line-step) * 3);
+  }
+</style>
